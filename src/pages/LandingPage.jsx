@@ -25,7 +25,7 @@ const LandingPage = () => {
                   Nestled in the heart of Mountain View, our rental property offers a perfect blend of comfort and luxury. 
                   With stunning views and modern amenities, it's the ideal place for your next getaway.
                 </p>
-                <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Property exterior" className="w-full h-64 object-cover rounded-lg mb-4" />
+                <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Property exterior" className="w-full h-80 object-cover rounded-lg mb-4" />
               </CardContent>
             </Card>
           </Parallax>
@@ -38,7 +38,7 @@ const LandingPage = () => {
                   Our property has been a landmark in Mountain View for decades. It has been lovingly restored 
                   to preserve its original charm while offering all the modern conveniences you expect.
                 </p>
-                <img src="https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Historical photo" className="w-full h-64 object-cover rounded-lg mb-4" />
+                <img src="https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Historical photo" className="w-full h-80 object-cover rounded-lg mb-4" />
               </CardContent>
             </Card>
           </Parallax>
