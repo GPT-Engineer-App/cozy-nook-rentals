@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Card, CardContent } from "@/components/ui/card";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import Footer from '../components/Footer';
 
 const photos = [
@@ -12,6 +13,8 @@ const photos = [
 ];
 
 const PhotoGallery = () => {
+  const [selectedPhoto, setSelectedPhoto] = useState(null);
+
   return (
     <div className="flex flex-col min-h-screen bg-gray-100">
       <main className="flex-grow container mx-auto px-4 py-8">
@@ -20,7 +23,23 @@ const PhotoGallery = () => {
           {photos.map((photo) => (
             <Card key={photo.id}>
               <CardContent className="p-4">
-                <img src={photo.src} alt={photo.alt} className="w-full h-64 object-cover rounded-lg" />
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <img 
+                      src={photo.src} 
+                      alt={photo.alt} 
+                      className="w-full h-64 object-cover rounded-lg cursor-pointer" 
+                      onClick={() => setSelectedPhoto(photo)}
+                    />
+                  </DialogTrigger>
+                  <DialogContent className="max-w-3xl max-h-[90vh] flex items-center justify-center">
+                    <img 
+                      src={selectedPhoto?.src} 
+                      alt={selectedPhoto?.alt} 
+                      className="max-w-full max-h-full object-contain"
+                    />
+                  </DialogContent>
+                </Dialog>
                 <p className="text-center mt-2">{photo.alt}</p>
               </CardContent>
             </Card>
