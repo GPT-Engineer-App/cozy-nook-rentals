@@ -49,12 +49,12 @@ const RentalDialog = ({ rental }) => {
       <DialogTrigger asChild>
         <Button className="w-full">View Details</Button>
       </DialogTrigger>
-      <DialogContent className="max-w-3xl max-h-[80vh]">
-        <DialogHeader>
+      <DialogContent className="max-w-3xl h-[80vh] flex flex-col">
+        <DialogHeader className="flex-shrink-0">
           <DialogTitle>{rental.name}</DialogTitle>
         </DialogHeader>
-        <ScrollArea className="h-full pr-4">
-          <div className="grid grid-cols-2 gap-4">
+        <ScrollArea className="flex-grow pr-4">
+          <div className="space-y-6">
             <div>
               <h3 className="font-semibold mb-2">Images</h3>
               <div className="grid grid-cols-2 gap-2">
@@ -74,26 +74,28 @@ const RentalDialog = ({ rental }) => {
               <p>Size: {rental.squareMeters} m²</p>
               <p>Price: {rental.price}</p>
               <p>Rent: {rental.rent}</p>
-              <h3 className="font-semibold mt-4 mb-2">Amenities</h3>
+            </div>
+            <div>
+              <h3 className="font-semibold mb-2">Amenities</h3>
               <ul className="list-disc list-inside">
                 {rental.amenities.map((amenity, index) => (
                   <li key={index}>{amenity}</li>
                 ))}
               </ul>
             </div>
-          </div>
-          <div className="mt-4">
-            <h3 className="font-semibold mb-2">Description</h3>
-            <p className="text-gray-700">{rental.description}</p>
-          </div>
-          <div className="mt-4">
-            <h3 className="font-semibold mb-2">Floor Plan</h3>
-            <img
-              src={rental.floorPlan}
-              alt={`${rental.name} Floor Plan`}
-              className="w-full h-64 object-contain cursor-pointer"
-              onClick={() => setExpandedImage(rental.floorPlan)}
-            />
+            <div>
+              <h3 className="font-semibold mb-2">Description</h3>
+              <p className="text-gray-700">{rental.description}</p>
+            </div>
+            <div>
+              <h3 className="font-semibold mb-2">Floor Plan</h3>
+              <img
+                src={rental.floorPlan}
+                alt={`${rental.name} Floor Plan`}
+                className="w-full h-64 object-contain cursor-pointer"
+                onClick={() => setExpandedImage(rental.floorPlan)}
+              />
+            </div>
           </div>
         </ScrollArea>
         {expandedImage && (
