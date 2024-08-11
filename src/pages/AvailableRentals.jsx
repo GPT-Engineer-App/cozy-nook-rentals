@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import Footer from '../components/Footer';
 
 const rentals = [
@@ -40,48 +41,70 @@ const rentals = [
   },
 ];
 
-const RentalDialog = ({ rental }) => (
-  <Dialog>
-    <DialogTrigger asChild>
-      <Button className="w-full">View Details</Button>
-    </DialogTrigger>
-    <DialogContent className="max-w-3xl">
-      <DialogHeader>
-        <DialogTitle>{rental.name}</DialogTitle>
-      </DialogHeader>
-      <div className="grid grid-cols-2 gap-4">
-        <div>
-          <h3 className="font-semibold mb-2">Images</h3>
-          <div className="grid grid-cols-2 gap-2">
-            {rental.images.map((img, index) => (
-              <img key={index} src={img} alt={`${rental.name} - Image ${index + 1}`} className="w-full h-32 object-cover rounded" />
-            ))}
+const RentalDialog = ({ rental }) => {
+  const [expandedImage, setExpandedImage] = useState(null);
+
+  return (
+    <Dialog>
+      <DialogTrigger asChild>
+        <Button className="w-full">View Details</Button>
+      </DialogTrigger>
+      <DialogContent className="max-w-3xl max-h-[80vh]">
+        <DialogHeader>
+          <DialogTitle>{rental.name}</DialogTitle>
+        </DialogHeader>
+        <ScrollArea className="h-full pr-4">
+          <div className="grid grid-cols-2 gap-4">
+            <div>
+              <h3 className="font-semibold mb-2">Images</h3>
+              <div className="grid grid-cols-2 gap-2">
+                {rental.images.map((img, index) => (
+                  <img
+                    key={index}
+                    src={img}
+                    alt={`${rental.name} - Image ${index + 1}`}
+                    className="w-full h-32 object-cover rounded cursor-pointer"
+                    onClick={() => setExpandedImage(img)}
+                  />
+                ))}
+              </div>
+            </div>
+            <div>
+              <h3 className="font-semibold mb-2">Details</h3>
+              <p>Size: {rental.squareMeters} m²</p>
+              <p>Price: {rental.price}</p>
+              <p>Rent: {rental.rent}</p>
+              <h3 className="font-semibold mt-4 mb-2">Amenities</h3>
+              <ul className="list-disc list-inside">
+                {rental.amenities.map((amenity, index) => (
+                  <li key={index}>{amenity}</li>
+                ))}
+              </ul>
+            </div>
           </div>
-        </div>
-        <div>
-          <h3 className="font-semibold mb-2">Details</h3>
-          <p>Size: {rental.squareMeters} m²</p>
-          <p>Price: {rental.price}</p>
-          <p>Rent: {rental.rent}</p>
-          <h3 className="font-semibold mt-4 mb-2">Amenities</h3>
-          <ul className="list-disc list-inside">
-            {rental.amenities.map((amenity, index) => (
-              <li key={index}>{amenity}</li>
-            ))}
-          </ul>
-        </div>
-      </div>
-      <div className="mt-4">
-        <h3 className="font-semibold mb-2">Description</h3>
-        <p className="text-gray-700">{rental.description}</p>
-      </div>
-      <div className="mt-4">
-        <h3 className="font-semibold mb-2">Floor Plan</h3>
-        <img src={rental.floorPlan} alt={`${rental.name} Floor Plan`} className="w-full h-64 object-contain" />
-      </div>
-    </DialogContent>
-  </Dialog>
-);
+          <div className="mt-4">
+            <h3 className="font-semibold mb-2">Description</h3>
+            <p className="text-gray-700">{rental.description}</p>
+          </div>
+          <div className="mt-4">
+            <h3 className="font-semibold mb-2">Floor Plan</h3>
+            <img
+              src={rental.floorPlan}
+              alt={`${rental.name} Floor Plan`}
+              className="w-full h-64 object-contain cursor-pointer"
+              onClick={() => setExpandedImage(rental.floorPlan)}
+            />
+          </div>
+        </ScrollArea>
+        {expandedImage && (
+          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50" onClick={() => setExpandedImage(null)}>
+            <img src={expandedImage} alt="Expanded view" className="max-w-full max-h-full object-contain" />
+          </div>
+        )}
+      </DialogContent>
+    </Dialog>
+  );
+};
 
 const AvailableRentals = () => {
   return (
