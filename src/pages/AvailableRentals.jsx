@@ -13,7 +13,8 @@ const rentals = [
     squareMeters: 30,
     floorPlan: "/placeholder.svg",
     amenities: ["Wi-Fi", "Air Conditioning", "Kitchenette"],
-    rent: "$2000/month"
+    rent: "$2000/month",
+    description: "A charming studio apartment perfect for solo travelers or couples. Enjoy a compact living space with all the essentials for a comfortable stay."
   },
   { 
     id: 2, 
@@ -23,7 +24,8 @@ const rentals = [
     squareMeters: 80,
     floorPlan: "/placeholder.svg",
     amenities: ["Wi-Fi", "Air Conditioning", "Full Kitchen", "Washer/Dryer"],
-    rent: "$3500/month"
+    rent: "$3500/month",
+    description: "A roomy two-bedroom apartment ideal for families or groups. Features a full kitchen, separate living area, and in-unit laundry for added convenience."
   },
   { 
     id: 3, 
@@ -33,7 +35,8 @@ const rentals = [
     squareMeters: 150,
     floorPlan: "/placeholder.svg",
     amenities: ["Wi-Fi", "Air Conditioning", "Full Kitchen", "Washer/Dryer", "Private Terrace", "Gym Access"],
-    rent: "$7000/month"
+    rent: "$7000/month",
+    description: "Experience the height of luxury in this stunning penthouse. Enjoy breathtaking views, high-end finishes, and exclusive amenities for a truly unforgettable stay."
   },
 ];
 
@@ -67,6 +70,10 @@ const RentalDialog = ({ rental }) => (
             ))}
           </ul>
         </div>
+      </div>
+      <div className="mt-4">
+        <h3 className="font-semibold mb-2">Description</h3>
+        <p className="text-gray-700">{rental.description}</p>
       </div>
       <div className="mt-4">
         <h3 className="font-semibold mb-2">Floor Plan</h3>
