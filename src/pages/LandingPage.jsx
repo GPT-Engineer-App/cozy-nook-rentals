@@ -7,7 +7,7 @@ import { ParallaxProvider, Parallax } from 'react-scroll-parallax';
 const LandingPage = () => {
   return (
     <ParallaxProvider>
-      <div className="min-h-screen bg-gray-100">
+      <div className="flex flex-col min-h-screen bg-gray-100">
         <Parallax speed={-10}>
           <div className="h-screen bg-cover bg-center" style={{backgroundImage: 'url("https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80")'}}>
             <div className="h-full flex items-center justify-center bg-black bg-opacity-50">
@@ -64,7 +64,9 @@ const LandingPage = () => {
             </Card>
           </Parallax>
         </main>
-        <Footer />
+        <div className="mt-auto">
+          <Footer />
+        </div>
       </div>
     </ParallaxProvider>
   );

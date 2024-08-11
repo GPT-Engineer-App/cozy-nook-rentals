@@ -11,7 +11,8 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <BrowserRouter>
-        <nav className="bg-gray-800 text-white p-4">
+        <div className="flex flex-col min-h-screen">
+          <nav className="bg-gray-800 text-white p-4">
           <ul className="flex space-x-4">
             {navItems.map(({ title, to, icon }) => (
               <li key={to}>
@@ -27,7 +28,8 @@ const App = () => (
           {navItems.map(({ to, page }) => (
             <Route key={to} path={to} element={page} />
           ))}
-        </Routes>
+          </Routes>
+        </div>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
